@@ -4,7 +4,7 @@
     package="com.example.internshipappdawidciubak">
 
     <application
-        android:name=".domain.InternshipApplication"
+        android:name=".di.InternshipApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

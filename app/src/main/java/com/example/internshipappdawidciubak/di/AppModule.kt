@@ -1,4 +1,4 @@
-package com.example.internshipappdawidciubak.domain
+package com.example.internshipappdawidciubak.di
 
 import dagger.Module
 import dagger.hilt.InstallIn
