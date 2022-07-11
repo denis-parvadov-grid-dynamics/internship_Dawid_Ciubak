@@ -6,7 +6,7 @@ import com.example.domain.model.Model
 import com.example.domain.repository.Repository
 import javax.inject.Inject
 
-class CoinRepositoryImpl @Inject constructor(
+class RepositoryImpl @Inject constructor(
     private val api: Api
 ): Repository {
     override suspend fun getData(): List<Model> {

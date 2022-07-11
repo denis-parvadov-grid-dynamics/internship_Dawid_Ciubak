@@ -1,5 +1,5 @@
 package com.example.domain.model
 
-data class Holder(
-    private val hold: String? = null
+data class Model(
+    private val holder: String? = null
 )
