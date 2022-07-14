@@ -18,6 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
       - name: LocalProperties
         env:
           MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
@@ -29,7 +32,7 @@ jobs:
 
       - name: Linting
         run: ./gradlew lint
-     
+
       - name: Assembling
         run: ./gradlew assembleDebug
 
