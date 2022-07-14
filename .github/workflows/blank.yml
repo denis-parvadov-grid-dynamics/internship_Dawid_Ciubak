@@ -28,7 +28,7 @@ jobs:
         shell: bash
 
       - name: Linting
-        run: ./gradlew ktlintCheck
+        run: ./gradlew lint
      
       - name: Assembling
         run: ./gradlew assembleDebug
