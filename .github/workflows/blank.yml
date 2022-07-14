@@ -27,8 +27,11 @@ jobs:
           cat local.properties
         shell: bash
 
-      - name: Linting
+      - name: ktLint
         run: ./gradlew ktlintCheck
+        
+      - name: Lint
+        run: ./gradlew lint
      
       - name: Assembling
         run: ./gradlew assembleDebug
