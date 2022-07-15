@@ -12,7 +12,7 @@ import javax.inject.Inject
 class GetDataUseCase @Inject constructor(
     private val repository: Repository
 ) {
-    operator fun invoke(): Flow<Resource<List<Model>>> = flow{
+    operator fun invoke(): Flow<Resource<List<Model>>> = flow {
         try {
             emit(Resource.Loading())
             val data = repository.getData()
