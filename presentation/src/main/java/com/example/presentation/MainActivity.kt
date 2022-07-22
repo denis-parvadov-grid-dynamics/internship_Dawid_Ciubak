@@ -29,8 +29,7 @@ class MainActivity : AppCompatActivity() {
         // cart card icon navigation
         val cartCardView = findViewById<CardView>(R.id.cartCardView)
         cartCardView.setOnClickListener {
-            val cartMenuItem = bottomNavView.menu.findItem(R.id.cart_navigation)
-            NavigationUI.onNavDestinationSelected(cartMenuItem, navController)
+            navController.navigate(R.id.cart_navigation)
         }
     }
 }
