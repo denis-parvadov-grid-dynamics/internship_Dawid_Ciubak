@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Strings related to the login_page   -->
+    <string name="login">Login</string>
+    <string name="hintEmail">Your email <font color="#5ECE7B">*</font></string>
+    <string name="hintPassword">Password <font color="#5ECE7B">*</font></string>
+    <string name="forgottenPassword"><u>Forgotten password?</u></string>
+    <string name="noAccountYet">Don\'t have an account yet?</string>
+    <string name="registerNow"><u>Register now</u></string>
+
+    <!-- Strings related to the register_page -->
+    <string name="register">Register</string>
+    <string name="hintFirstName">First Name <font color="#5ECE7B">*</font></string>
+    <string name="hintLastName">Last Name <font color="#5ECE7B">*</font></string>
+    <string name="createAnAccount">Create an account</string>
+    <string name="orLogIntoYourAccount"><u>or log in to your account</u></string>
+
 </resources>

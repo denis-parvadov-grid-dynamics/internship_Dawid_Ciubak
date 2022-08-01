@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#ffffffff</color>
+    <color name="black">@android:color/black</color>
     <color name="primary_green">#5ECE7B</color>
     <color name="dark_variant">#43464E</color>
     <color name="dark_gray">#72757E</color>
     <color name="light_gray">#F1F2F3</color>
     <color name="transparent">#80000000</color>
+    <color name="login_green">#7bca83</color>
+    <color name="gray">#e5e5e5</color>
 </resources>

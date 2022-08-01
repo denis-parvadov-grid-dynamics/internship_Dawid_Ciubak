@@ -3,11 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/account_navigation"
-    app:startDestination="@id/accountFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.example.presentation.account_fragment.AccountFragment"
+        android:name="com.example.presentation.account_tab.accountFragment.AccountFragment"
         android:label="account_fragment"
-        tools:layout="@layout/account_fragment" />
+        tools:layout="@layout/account_fragment" >
+        <action
+            android:id="@+id/action_accountFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.presentation.account_tab.loginFragment.LoginFragment"
+        android:label="login_page"
+        tools:layout="@layout/login_page" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.presentation.account_tab.registerFragment.RegisterFragment"
+        android:label="register_page"
+        tools:layout="@layout/register_page" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
