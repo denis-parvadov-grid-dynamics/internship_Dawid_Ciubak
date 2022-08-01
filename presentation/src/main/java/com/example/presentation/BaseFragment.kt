@@ -37,3 +37,4 @@ abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes private val fragmentR
         findNavController().navigateUp()
     }
 }
+
