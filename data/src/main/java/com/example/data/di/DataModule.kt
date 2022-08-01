@@ -1,35 +1,59 @@
 package com.example.data.di
 
-import com.example.data.api.Api
-import com.example.data.repository.RepositoryImpl
+import android.content.Context
+import androidx.room.Room
+import com.example.data.local.AppDatabase
+import com.example.data.local.dao.DatabaseDao
+import com.example.data.local.repository.AppDatabaseRepositoryImpl
+import com.example.data.remote.api.FakeStoreApi
+import com.example.data.remote.repository.FakeStoreRepositoryImpl
 import com.example.domain.common.Constants
-import com.example.domain.repository.Repository
-import com.example.domain.use_case.getData.GetDataUseCase
+import com.example.domain.repository.AppDatabaseRepository
+import com.example.domain.repository.FakeStoreRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
+    @Provides
+    @Singleton
+    fun provideApi(): FakeStoreApi {
+        return Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .build()
+            .create(FakeStoreApi::class.java)
+    }
 
     @Provides
     @Singleton
-    fun provideApi(): Api = Retrofit.Builder()
-        .baseUrl(Constants.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(Api::class.java)
+    fun provideFakeStoreRepository(api: FakeStoreApi): FakeStoreRepository {
+        return FakeStoreRepositoryImpl(api)
+    }
 
     @Provides
     @Singleton
-    fun provideRepository(api: Api): Repository = RepositoryImpl(api)
+    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
+        return Room
+            .databaseBuilder(appContext, AppDatabase::class.java, "appDatabase.db")
+            .build()
+    }
+
+    @Provides
+    fun provideDatabaseDao(db: AppDatabase): DatabaseDao = db.getDatabaseDao()
 
     @Provides
     @Singleton
-    fun getDataUseCase(repository: RepositoryImpl): GetDataUseCase = GetDataUseCase(repository)
+    fun provideAppDatabaseRepository(dao: DatabaseDao): AppDatabaseRepository {
+        return AppDatabaseRepositoryImpl(dao)
+    }
 }
