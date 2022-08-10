@@ -1,8 +1,8 @@
 package com.example.domain.common
 
 fun String.validateAsUsername(): String? {
-    if (this.length < 2) {
-        return "Minimum 2 Character Username"
+    if (this.isEmpty()) {
+        return "Minimum 1 Character Username"
     }
     return null
 }
