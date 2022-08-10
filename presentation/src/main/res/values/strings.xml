@@ -3,7 +3,7 @@
 
     <!-- Strings related to the login_page   -->
     <string name="login">Login</string>
-    <string name="hintEmail">Your email <font color="#5ECE7B">*</font></string>
+    <string name="hintUsername">Username <font color="#5ECE7B">*</font></string>
     <string name="hintPassword">Password <font color="#5ECE7B">*</font></string>
     <string name="forgottenPassword"><u>Forgotten password?</u></string>
     <string name="noAccountYet">Don\'t have an account yet?</string>

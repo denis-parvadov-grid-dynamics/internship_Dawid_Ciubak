@@ -65,7 +65,7 @@ class LoginFragmentViewModel @Inject constructor(
                             if (throwable.code() == 401) {
                                 observableLoggedInUserLiveData.postValue(
                                     Result.failure(
-                                        Throwable("The email you entered isn’t connected to an account. Try registering first")
+                                        Throwable("The username you entered isn’t connected to an account. Try registering first")
                                     )
                                 )
                             } else {

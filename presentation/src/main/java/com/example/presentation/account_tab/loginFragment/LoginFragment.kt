@@ -6,15 +6,15 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.example.domain.common.LoginCredentialsWrapper
-import com.example.domain.common.validateAsEmail
 import com.example.domain.common.validateAsPassword
+import com.example.domain.common.validateAsUsername
 import com.example.presentation.BaseFragment
 import com.example.presentation.R
-import com.example.presentation.databinding.LoginPageBinding
+import com.example.presentation.databinding.LoginFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment<LoginPageBinding>(R.layout.login_page) {
+class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment) {
 
     private val viewModel: LoginFragmentViewModel by viewModels()
 
@@ -33,11 +33,11 @@ class LoginFragment : BaseFragment<LoginPageBinding>(R.layout.login_page) {
     }
 
     private fun setUpRulesForTextFields() {
-        // validating email
-        binding.emailEditText.setOnFocusChangeListener { _, focused ->
-            val usersEmailInput = binding.emailEditText.text.toString()
+        // validating username
+        binding.usernameEditText.setOnFocusChangeListener { _, focused ->
+            val usersUsernameInput = binding.usernameEditText.text.toString()
             if (!focused) {
-                binding.emailTextInputLayout.helperText = usersEmailInput.validateAsEmail()
+                binding.usernameTextInputLayout.helperText = usersUsernameInput.validateAsUsername()
             }
         }
 
@@ -54,13 +54,13 @@ class LoginFragment : BaseFragment<LoginPageBinding>(R.layout.login_page) {
         binding.loginButton.setOnClickListener {
             requireView().clearFocus() // clear focus from all text input fields
 
-            val validEmail = binding.emailTextInputLayout.helperText == null
+            val validUsername = binding.usernameTextInputLayout.helperText == null
             val validPassword = binding.passwordTextInputLayout.helperText == null
 
-            if (validEmail && validPassword) {
+            if (validUsername && validPassword) {
                 changeVisibilityStateOfTheProgressBar() // make the progress bar visible
 
-                val username = binding.emailEditText.text.toString()
+                val username = binding.usernameEditText.text.toString()
                 val password = binding.passwordEditText.text.toString()
 
                 viewModel.loginUser(LoginCredentialsWrapper(username, password))

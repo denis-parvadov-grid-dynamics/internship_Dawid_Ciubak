@@ -1,9 +1,8 @@
 package com.example.domain.common
 
-fun String.validateAsEmail(): String? {
-    val emailRegex = Regex("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
-    if (!this.matches(emailRegex)) {
-        return "Invalid Email Address"
+fun String.validateAsUsername(): String? {
+    if(this.length < 2) {
+        return "Minimum 2 Character Username"
     }
     return null
 }

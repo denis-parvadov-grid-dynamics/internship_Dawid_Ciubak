@@ -5,17 +5,17 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.example.domain.common.validateAsEmail
 import com.example.domain.common.validateAsName
 import com.example.domain.common.validateAsPassword
+import com.example.domain.common.validateAsUsername
 import com.example.domain.model.User
 import com.example.presentation.BaseFragment
 import com.example.presentation.R
-import com.example.presentation.databinding.RegisterPageBinding
+import com.example.presentation.databinding.RegisterFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegisterFragment : BaseFragment<RegisterPageBinding>(R.layout.register_page) {
+class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register_fragment) {
     private val viewModel: RegisterFragmentViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,10 +34,10 @@ class RegisterFragment : BaseFragment<RegisterPageBinding>(R.layout.register_pag
     }
 
     private fun setUpRulesForTextFields() {
-        binding.emailEditText.setOnFocusChangeListener { _, focused ->
-            val usersEmailInput = binding.emailEditText.text.toString()
+        binding.usernameEditText.setOnFocusChangeListener { _, focused ->
+            val usersUsernameInput = binding.usernameEditText.text.toString()
             if (!focused) {
-                binding.emailTextInputLayout.helperText = usersEmailInput.validateAsEmail()
+                binding.usernameTextInputLayout.helperText = usersUsernameInput.validateAsUsername()
             }
         }
 
@@ -67,20 +67,20 @@ class RegisterFragment : BaseFragment<RegisterPageBinding>(R.layout.register_pag
         binding.createAnAccountButton.setOnClickListener {
             requireView().clearFocus() // clear focus from all text input fields
 
-            val isEmailValid = binding.emailTextInputLayout.helperText == null
+            val isUsernameValid = binding.usernameTextInputLayout.helperText == null
             val isPasswordValid = binding.PasswordTextInputLayout.helperText == null
             val isFirstNameValid = binding.firstNameTextInputLayout.helperText == null
             val isLastNameValid = binding.lastNameTextInputLayout.helperText == null
 
-            if (isEmailValid && isPasswordValid && isFirstNameValid && isLastNameValid) {
+            if (isUsernameValid && isPasswordValid && isFirstNameValid && isLastNameValid) {
 
                 binding.progressBar.isVisible = true // visual indication for the user
 
-                val email = binding.emailEditText.text.toString()
+                val username = binding.usernameEditText.text.toString()
                 val firstName = binding.firstNameEditText.text.toString()
                 val lastName = binding.lastNameEditText.text.toString()
                 val password = binding.passwordEditText.text.toString()
-                val user = User(username = email, firstName = firstName, lastName = lastName, password = password)
+                val user = User(username = username, firstName = firstName, lastName = lastName, password = password)
                 viewModel.saveUserInDatabase(user)
                 navigateTo(R.id.loginFragment)
             } else {
