@@ -1,5 +1,6 @@
 package com.example.presentation.account_tab.registerFragment
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.model.User
 import com.example.domain.repository.AppDatabaseRepository
@@ -11,15 +12,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterFragmentViewModel @Inject constructor(
-    private val databaseRepository: AppDatabaseRepository,
-    private val apiRepository: FakeStoreRepository
+    private val databaseRepository: AppDatabaseRepository
 ) : ViewModel() {
+
     private val compositeDisposable = CompositeDisposable()
+    val observableLoggedInUserLiveData = MutableLiveData<User>()
+
     fun saveUserInDatabase(user: User) {
         databaseRepository.saveUserInDatabase(user)
             .subscribeOn(Schedulers.io())
             .subscribe(
-                {}, {}
+                { observableLoggedInUserLiveData.postValue(user) }, {}
             ).let {
                 compositeDisposable.add(it)
             }

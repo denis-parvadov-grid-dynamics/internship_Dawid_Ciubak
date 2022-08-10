@@ -8,8 +8,7 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val username: String,
-    val firstName: String,
-    val lastName: String,
-    val password: String,
-    val token: String? = null // obtained from UserLoginToken received from API, empty after registration
+    val firstName: String = "", // set either on the account fragment or registration fragment
+    val lastName: String = "", // set either on the account fragment or registration fragment
+    val password: String
 )

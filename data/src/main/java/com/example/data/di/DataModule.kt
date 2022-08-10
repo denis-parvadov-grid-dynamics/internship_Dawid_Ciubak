@@ -6,6 +6,7 @@ import com.example.data.local.AppDatabase
 import com.example.data.local.dao.DatabaseDao
 import com.example.data.local.repository.AppDatabaseRepositoryImpl
 import com.example.data.remote.api.FakeStoreApi
+import com.example.data.remote.interceptors.ConnectivityInterceptor
 import com.example.data.remote.repository.FakeStoreRepositoryImpl
 import com.example.domain.common.Constants
 import com.example.domain.repository.AppDatabaseRepository
@@ -15,6 +16,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,9 +27,20 @@ import javax.inject.Singleton
 object DataModule {
     @Provides
     @Singleton
-    fun provideApi(): FakeStoreApi {
+    fun provideConnectivityInterceptor() = ConnectivityInterceptor()
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(connectivityInterceptor: ConnectivityInterceptor): OkHttpClient {
+        return OkHttpClient.Builder().addInterceptor(connectivityInterceptor).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideApi(client: OkHttpClient): FakeStoreApi {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()

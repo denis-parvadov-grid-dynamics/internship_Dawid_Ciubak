@@ -11,7 +11,7 @@ import io.reactivex.rxjava3.core.Single
 
 @Dao
 interface DatabaseDao {
-    @Query("SELECT * FROM all_users WHERE token != ''")
+    @Query("SELECT * FROM all_users")
     fun checkForLoggedUser(): Single<User>
 
     @Update
