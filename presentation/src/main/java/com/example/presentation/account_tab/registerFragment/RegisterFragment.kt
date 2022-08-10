@@ -22,9 +22,7 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register
         setUpNavigationElements()
         setUpRegistration()
         setUpRulesForTextFields()
-        viewModel.observableLoggedInUserLiveData.observe(viewLifecycleOwner) {
-            navigateTo(R.id.accountFragment)
-        }
+        observeForChangesInLoggedUsers()
     }
 
     private fun setUpNavigationElements() {
@@ -82,10 +80,15 @@ class RegisterFragment : BaseFragment<RegisterFragmentBinding>(R.layout.register
                 val password = binding.passwordEditText.text.toString()
                 val user = User(username = username, firstName = firstName, lastName = lastName, password = password)
                 viewModel.saveUserInDatabase(user)
-                navigateTo(R.id.loginFragment)
             } else {
                 Toast.makeText(requireContext(), "Invalid Form Data", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    private fun observeForChangesInLoggedUsers() {
+        viewModel.observableLoggedInUserLiveData.observe(viewLifecycleOwner) {
+            navigateTo(R.id.accountFragment)
         }
     }
 }

@@ -43,15 +43,12 @@ class LoginFragmentViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .subscribe(
                 { apiResponse ->
-                    // user logged in successfully (api response: 200)
-                    observableLoggedInUserLiveData.postValue(
-                        Result.success(
-                            User(
-                                username = loginCredentials.username,
-                                password = loginCredentials.password
-                            )
-                        )
+                    val user = User(
+                        username = loginCredentials.username,
+                        password = loginCredentials.password
                     )
+                    // user logged in successfully (api response: 200)
+                    saveUserInTheDatabase(user)
                 },
                 { throwable ->
                     // Error related with the API (connection error or api returned 401)
@@ -78,6 +75,15 @@ class LoginFragmentViewModel @Inject constructor(
                     }
                 }
             )
+            .let { compositeDisposable.add(it) }
+    }
+
+    private fun saveUserInTheDatabase(user: User) {
+        AppDatabaseRepository.saveUserInDatabase(user)
+            .subscribeOn(Schedulers.io())
+            .subscribe({
+                observableLoggedInUserLiveData.postValue(Result.success(user))
+            }, {})
             .let { compositeDisposable.add(it) }
     }
 
