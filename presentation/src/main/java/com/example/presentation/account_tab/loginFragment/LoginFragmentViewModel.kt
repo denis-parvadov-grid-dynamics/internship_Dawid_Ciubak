@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginFragmentViewModel @Inject constructor(
-    private val AppDatabaseRepository: AppDatabaseRepository,
-    private val ApiRepository: FakeStoreRepository
+    private val appDatabaseRepository: AppDatabaseRepository,
+    private val apiRepository: FakeStoreRepository
 ) : ViewModel() {
 
     val observableLoggedInUserLiveData = MutableLiveData<Result<User>>()
@@ -28,7 +28,7 @@ class LoginFragmentViewModel @Inject constructor(
 
     private fun checkForLoggedInUsers() {
 
-        AppDatabaseRepository
+        appDatabaseRepository
             .checkForLoggedUser()
             .subscribeOn(Schedulers.io())
             .subscribe({ user ->
@@ -38,7 +38,7 @@ class LoginFragmentViewModel @Inject constructor(
     }
 
     fun loginUser(loginCredentials: LoginCredentialsWrapper) {
-        ApiRepository
+        apiRepository
             .loginUser(loginCredentials)
             .subscribeOn(Schedulers.io())
             .subscribe(
@@ -79,7 +79,7 @@ class LoginFragmentViewModel @Inject constructor(
     }
 
     private fun saveUserInTheDatabase(user: User) {
-        AppDatabaseRepository.saveUserInDatabase(user)
+        appDatabaseRepository.saveUserInDatabase(user)
             .subscribeOn(Schedulers.io())
             .subscribe({
                 observableLoggedInUserLiveData.postValue(Result.success(user))
