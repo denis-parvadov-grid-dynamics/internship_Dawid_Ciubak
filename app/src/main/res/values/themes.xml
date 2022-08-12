@@ -15,5 +15,23 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
         <item name="android:windowNoTitle">true</item>
+
+        <item name="textInputStyle">@style/CustomLoginTextInputLayout</item>
+        <item name="editTextStyle">@style/CustomLoginEditText</item>
+    </style>
+
+    <style name="CustomLoginTextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="boxStrokeColor">@color/black</item>
+    </style>
+
+    <style name="CustomLoginEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:singleLine">true</item>
+        <item name="android:textCursorDrawable">@drawable/custom_cursor</item>
+        <item name="android:backgroundTint">@color/black</item>
+        <item name="backgroundTint">@color/black</item>
     </style>
 </resources>
