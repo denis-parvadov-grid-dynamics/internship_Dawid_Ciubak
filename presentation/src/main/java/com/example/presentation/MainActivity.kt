@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +29,8 @@ class MainActivity : AppCompatActivity() {
         // cart card icon navigation
         val cartCardView = findViewById<CardView>(R.id.cartCardView)
         cartCardView.setOnClickListener {
-            navController.navigate(R.id.cart_navigation)
+            val cartMenuItem = bottomNavView.menu.findItem(R.id.cart_navigation)
+            NavigationUI.onNavDestinationSelected(cartMenuItem, navController)
         }
     }
 }

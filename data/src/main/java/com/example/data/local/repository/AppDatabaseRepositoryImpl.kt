@@ -25,4 +25,8 @@ class AppDatabaseRepositoryImpl @Inject constructor(
     override fun saveUserInDatabase(user: User): Completable {
         return dao.saveUserInDatabase(user)
     }
+
+    override fun deleteAllUserRecords(): Completable {
+        return dao.deleteAllUserRecords()
+    }
 }

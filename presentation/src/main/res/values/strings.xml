@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Strings related to the login_page   -->
-    <string name="login">Login</string>
     <string name="hintUsername">Username <font color="#5ECE7B">*</font></string>
     <string name="hintPassword">Password <font color="#5ECE7B">*</font></string>
+    <string name="hintFirstName">First Name <font color="#5ECE7B">*</font></string>
+    <string name="hintLastName">Last Name <font color="#5ECE7B">*</font></string>
+
+    <!-- Strings related only to the login_fragment   -->
+    <string name="login">Login</string>
     <string name="forgottenPassword"><u>Forgotten password?</u></string>
     <string name="noAccountYet">Don\'t have an account yet?</string>
     <string name="registerNow"><u>Register now</u></string>
 
-    <!-- Strings related to the register_page -->
+    <!-- Strings related only to the register_fragment -->
     <string name="register">Register</string>
-    <string name="hintFirstName">First Name <font color="#5ECE7B">*</font></string>
-    <string name="hintLastName">Last Name <font color="#5ECE7B">*</font></string>
     <string name="createAnAccount">Create an account</string>
     <string name="orLogIntoYourAccount"><u>or log in to your account</u></string>
 
+    <!-- Strings related only to the account_fragment -->
+    <string name="personalData">Personal Data</string>
+    <string name="updatePersonalData">Update Personal Data</string>
+    <string name="feelFreeToEditDetails">Feel free to edit any of your details below so your account is always up to date</string>
+    <string name="atBrandNameWeAttach">At Brand name, we attach great importance to privacy issues and are committed to protecting the personal data of our users. Learn more about how we care and use your personal data in the <font color="#5ECE7B">Privacy Policy</font></string>
+    <string name="passwordChange">Password Change</string>
+    <string name="logout">Logout</string>
 </resources>
