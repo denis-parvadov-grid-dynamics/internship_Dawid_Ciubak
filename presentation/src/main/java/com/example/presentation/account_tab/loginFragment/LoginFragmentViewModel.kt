@@ -1,6 +1,5 @@
 package com.example.presentation.account_tab.loginFragment
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.common.LoginCredentialsWrapper
@@ -8,7 +7,6 @@ import com.example.domain.model.User
 import com.example.domain.repository.AppDatabaseRepository
 import com.example.domain.repository.FakeStoreRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.HttpException
