@@ -20,10 +20,10 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeForChangesInLoggedUsers()
         setUpNavigationElements()
         setUpLoginButton()
         setUpRulesForTextFields()
-        observeForChangesInLoggedUsers()
     }
 
     private fun setUpNavigationElements() {
@@ -75,10 +75,11 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment
             if (result.isSuccess) {
                 navigateTo(R.id.accountFragment)
             } else {
-                changeVisibilityStateOfTheProgressBar() // the progress bar should not be visible
+                val loginFragmentScreen = binding.loginFragmentConstraintLayout
+                if (!loginFragmentScreen.isVisible) { loginFragmentScreen.visibility = View.VISIBLE }
                 result.onFailure { throwable ->
                     // display the message to the user
-                    displayLoginError(throwable.localizedMessage ?: "")
+                    notifyUserOfLoginError(throwable.localizedMessage)
                 }
             }
         }
@@ -88,7 +89,10 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(R.layout.login_fragment
         binding.progressBar.isVisible = !binding.progressBar.isVisible
     }
 
-    private fun displayLoginError(errorMessage: String) {
-        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+    private fun notifyUserOfLoginError(errorMessage: String?) {
+        if (errorMessage != null) {
+            Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
+            changeVisibilityStateOfTheProgressBar() // the progress bar should not be visible
+        }
     }
 }

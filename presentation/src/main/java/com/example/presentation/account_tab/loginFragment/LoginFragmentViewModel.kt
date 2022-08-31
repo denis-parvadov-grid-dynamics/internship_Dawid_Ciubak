@@ -1,5 +1,6 @@
 package com.example.presentation.account_tab.loginFragment
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.common.LoginCredentialsWrapper
@@ -7,6 +8,7 @@ import com.example.domain.model.User
 import com.example.domain.repository.AppDatabaseRepository
 import com.example.domain.repository.FakeStoreRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import retrofit2.HttpException
@@ -26,14 +28,17 @@ class LoginFragmentViewModel @Inject constructor(
         checkForLoggedInUsers()
     }
 
-    private fun checkForLoggedInUsers() {
-
+    fun checkForLoggedInUsers() {
         appDatabaseRepository
             .checkForLoggedUser()
             .subscribeOn(Schedulers.io())
             .subscribe({ user ->
                 observableLoggedInUserLiveData.postValue(Result.success(user))
-            }, {})
+            }, {
+                // no user found in database, do not display any messages for the user, just
+                // notify UI of that
+                observableLoggedInUserLiveData.postValue(Result.failure(Throwable(message = null)))
+            })
             .let { compositeDisposable.add(it) }
     }
 

@@ -14,16 +14,16 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.transition.AutoTransition
 import android.transition.TransitionManager
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.net.toUri
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.domain.common.toTrimmedString
 import com.example.domain.common.validateAsName
 import com.example.domain.common.validateAsUsername
@@ -61,10 +61,20 @@ class AccountFragment : BaseFragment<AccountFragmentBinding>(R.layout.account_fr
                     changeProfilePicture(photoResult)
                 } else {
                     // user made a photo
-                    Log.i("idk1", "userMadeAPhoto: $currentPhotoUri ")
                     changeProfilePicture(currentPhotoUri)
                 }
                 isChanged = true
+            }
+        }
+
+    // works as "onRequestPermissionResult" (it is depreciated, so had to use registerForActivityResult)
+    // opens the intent if the user granted all permissions
+    private val requestLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+            // I know this has access to a map of the results, but the code would do exactly
+            // the same what our function does, so that's why it is used here again
+            if (checkPermissions()) {
+                openIntentChooserForImageSources()
             }
         }
 
@@ -77,6 +87,7 @@ class AccountFragment : BaseFragment<AccountFragmentBinding>(R.layout.account_fr
         showUsersDataAndObserveForChanges()
 
         manageExtendabilityOfTheCardViews()
+        changeExtendedStatusOfThePersonalDataCard()
         setUpPrivacyPolicyTextViews()
 
         setUpUserPictureButton()
@@ -133,7 +144,6 @@ class AccountFragment : BaseFragment<AccountFragmentBinding>(R.layout.account_fr
 
     @Throws(IOException::class)
     private fun createImageFile(): File {
-        Log.i("idk1", "createImageFile: called")
         // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         val storageDir: File? =
@@ -180,11 +190,7 @@ class AccountFragment : BaseFragment<AccountFragmentBinding>(R.layout.account_fr
             listOfMissingPermissions.add(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
         if (listOfMissingPermissions.isNotEmpty()) {
-            ActivityCompat.requestPermissions(
-                requireActivity(),
-                listOfMissingPermissions.toTypedArray(),
-                101
-            )
+            requestLauncher.launch(listOfMissingPermissions.toTypedArray())
         }
     }
 
@@ -280,7 +286,10 @@ class AccountFragment : BaseFragment<AccountFragmentBinding>(R.layout.account_fr
     private fun setUpLogoutButton() {
         binding.logoutPasswordChangeButton.setOnClickListener {
             viewModel.logoutUser()
-            navigateTo(R.id.loginFragment)
+
+            // we are not using navigateTo() function here, because this action also clears
+            // the backstack (check account_navigation graph's pop behaviour for this action)
+            findNavController().navigate(R.id.action_accountFragment_to_loginFragment)
         }
     }
 
@@ -422,37 +431,55 @@ class AccountFragment : BaseFragment<AccountFragmentBinding>(R.layout.account_fr
         }
     }
 
-    private fun manageExtendabilityOfTheCardViews() {
-        // first card
+    private fun changeExtendedStatusOfThePersonalDataCard() {
         val personalDataArrowIconButton = binding.personalDataArrowIconButton
         val personalDataHiddenView = binding.hiddenViewPersonalData
         val personalDataCardView = binding.personalDataCardView
-        personalDataArrowIconButton.setOnClickListener {
-            if (personalDataHiddenView.visibility == View.VISIBLE) {
-                TransitionManager.beginDelayedTransition(personalDataCardView, AutoTransition())
-                personalDataHiddenView.visibility = View.GONE
-                personalDataArrowIconButton.setImageResource(R.drawable.ic_arrow_more)
-            } else {
-                TransitionManager.beginDelayedTransition(personalDataCardView, AutoTransition())
-                personalDataHiddenView.visibility = View.VISIBLE
-                personalDataArrowIconButton.setImageResource(R.drawable.ic_arrow_less)
-            }
+        if (personalDataHiddenView.isVisible) {
+            TransitionManager.beginDelayedTransition(personalDataCardView, AutoTransition())
+            personalDataHiddenView.visibility = View.GONE
+            personalDataArrowIconButton.setImageResource(R.drawable.ic_arrow_more)
+        } else {
+            TransitionManager.beginDelayedTransition(personalDataCardView, AutoTransition())
+            personalDataHiddenView.visibility = View.VISIBLE
+            personalDataArrowIconButton.setImageResource(R.drawable.ic_arrow_less)
         }
+    }
 
-        // second card
+    private fun changeExtendedStatusOfThePasswordChangeCard() {
         val passwordChangeArrowIconButton = binding.passwordChangeArrowImageButton
         val passwordChangeHiddenView = binding.hiddenViewPasswordChange
         val passwordChangeCardView = binding.passwordChangeCardView
-        passwordChangeArrowIconButton.setOnClickListener {
-            if (passwordChangeHiddenView.visibility == View.VISIBLE) {
-                TransitionManager.beginDelayedTransition(passwordChangeCardView, AutoTransition())
-                passwordChangeHiddenView.visibility = View.GONE
-                passwordChangeArrowIconButton.setImageResource(R.drawable.ic_arrow_more)
-            } else {
-                TransitionManager.beginDelayedTransition(passwordChangeCardView, AutoTransition())
-                passwordChangeHiddenView.visibility = View.VISIBLE
-                passwordChangeArrowIconButton.setImageResource(R.drawable.ic_arrow_less)
+        if (passwordChangeHiddenView.isVisible) {
+            TransitionManager.beginDelayedTransition(passwordChangeCardView, AutoTransition())
+            passwordChangeHiddenView.visibility = View.GONE
+            passwordChangeArrowIconButton.setImageResource(R.drawable.ic_arrow_more)
+        } else {
+            TransitionManager.beginDelayedTransition(passwordChangeCardView, AutoTransition())
+            passwordChangeHiddenView.visibility = View.VISIBLE
+            passwordChangeArrowIconButton.setImageResource(R.drawable.ic_arrow_less)
+        }
+    }
+
+    private fun manageExtendabilityOfTheCardViews() {
+        // first card
+        val fixedLayoutPersonalData = binding.fixedLayoutPersonalData
+        fixedLayoutPersonalData.setOnClickListener {
+            // if the password's change hidden view is visible, hide it
+            if (binding.hiddenViewPasswordChange.isVisible) {
+                changeExtendedStatusOfThePasswordChangeCard()
             }
+            changeExtendedStatusOfThePersonalDataCard()
+        }
+
+        // second card
+        val fixedLayoutPasswordChange = binding.fixedLayoutPasswordChange
+        fixedLayoutPasswordChange.setOnClickListener {
+            // if the personal's data hidden view is visible, hide it
+            if (binding.hiddenViewPersonalData.isVisible) {
+                changeExtendedStatusOfThePersonalDataCard()
+            }
+            changeExtendedStatusOfThePasswordChangeCard()
         }
     }
 }
