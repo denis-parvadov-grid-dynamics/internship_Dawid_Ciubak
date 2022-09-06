@@ -26,14 +26,17 @@ class LoginFragmentViewModel @Inject constructor(
         checkForLoggedInUsers()
     }
 
-    private fun checkForLoggedInUsers() {
-
+    fun checkForLoggedInUsers() {
         appDatabaseRepository
             .checkForLoggedUser()
             .subscribeOn(Schedulers.io())
             .subscribe({ user ->
                 observableLoggedInUserLiveData.postValue(Result.success(user))
-            }, {})
+            }, {
+                // no user found in database, do not display any messages for the user, just
+                // notify UI of that
+                observableLoggedInUserLiveData.postValue(Result.failure(Throwable(message = null)))
+            })
             .let { compositeDisposable.add(it) }
     }
 

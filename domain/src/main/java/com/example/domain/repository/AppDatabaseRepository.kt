@@ -9,4 +9,5 @@ interface AppDatabaseRepository {
     fun updateUser(user: User): Completable
     fun getUserWithMatchingCredentials(username: String, password: String): Single<User>
     fun saveUserInDatabase(user: User): Completable
+    fun deleteAllUserRecords(): Completable
 }

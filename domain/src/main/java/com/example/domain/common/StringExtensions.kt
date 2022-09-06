@@ -1,5 +1,7 @@
 package com.example.domain.common
 
+import android.text.Editable
+
 fun String.validateAsUsername(): String? {
     if (this.isEmpty()) {
         return "Minimum 1 Character Username"
@@ -20,4 +22,8 @@ fun String.validateAsName(): String? {
         return "Not a valid name"
     }
     return null
+}
+
+fun Editable?.toTrimmedString(): String {
+    return this.toString().trim()
 }

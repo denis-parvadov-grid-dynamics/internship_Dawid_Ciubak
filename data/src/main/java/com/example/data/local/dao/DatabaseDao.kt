@@ -22,4 +22,7 @@ interface DatabaseDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun saveUserInDatabase(user: User): Completable
+
+    @Query("DELETE FROM all_users")
+    fun deleteAllUserRecords(): Completable
 }

@@ -1,10 +1,452 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".account_tab.accountFragment.AccountFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="false"
+            tools:context=".account_tab.accountFragment.AccountFragment">
+
+            <!--Base CardView-->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/personalDataCardView"
+                style="@style/Base.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                           including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/personalDataCardView"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                        of the CardView. The elements
+                        that lie within the fixed portion of the CardView
+                        can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixedLayoutPersonalData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/personalDataTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/personalData"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/fixedLayoutPersonalData"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!--This is ImageButton for the expansion icon.-->
+                        <ImageButton
+                            android:id="@+id/personalDataArrowIconButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:background="@null"
+                            android:clickable="false"
+                            android:longClickable="false"
+                            android:padding="20dp"
+                            android:src="@drawable/ic_arrow_more"
+                            app:layout_constraintBottom_toBottomOf="@id/fixedLayoutPersonalData"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--The following is the expandable portion whose
+                        visibility is initially set to 'gone'.
+                        The parent LinearLayout contains 3 child LinearLayouts
+                        that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hiddenViewPersonalData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixedLayoutPersonalData"
+                        tools:visibility="visible">
+
+                        <!--Child LinearLayout 1-->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/userPickImageView"
+                                android:layout_width="250dp"
+                                android:layout_height="250dp"
+                                app:shapeAppearanceOverlay="@style/roundedImageView"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/avatar" />
+
+                        </LinearLayout>
+
+                        <!--Child LinearLayout 2-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/feelFreeToEditTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="sans-serif-light"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:text="@string/feelFreeToEditDetails"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <!--Child LinearLayout 3-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/firstNamePersonalDataTextInputLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/login_green"
+                                android:padding="10dp">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/firstNamePersonalDataEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/hintFirstName" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/lastNamePersonalDataTextInputLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/login_green"
+
+                                android:padding="10dp">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/lastNamePersonalDataEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/hintLastName" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/usernamePersonalDataTextInputLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/login_green"
+                                android:padding="10dp">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/usernamePersonalDataEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/hintUsername" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/updatePersonalDataPersonalDataButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/login_green"
+                                android:padding="20dp"
+                                android:text="@string/updatePersonalData" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/atBrandNamePersonalDataTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="sans-serif-light"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="@string/atBrandNameWeAttach"
+                                android:textColor="@color/black"
+                                android:textColorLink="@color/login_green"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/passwordChangeCardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="128dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/personalDataCardView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixedLayoutPasswordChange"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/paswordChangeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/passwordChange"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageButton
+                            android:id="@+id/passwordChangeArrowImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:background="@null"
+                            android:clickable="false"
+                            android:longClickable="false"
+                            android:padding="20dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_arrow_more" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/hiddenViewPasswordChange"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixedLayoutPasswordChange"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/feelFreeToEditTextView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingStart="16dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="16dp"
+                                android:paddingBottom="10dp"
+                                android:text="@string/feelFreeToEditDetails" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/firstNamePasswordChangeTextInputLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/login_green"
+                                android:paddingStart="16dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="16dp"
+                                android:paddingBottom="10dp">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/firstNamePasswordChangeEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/hintFirstName" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/lastNamePasswordChangeTextInputLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/login_green"
+                                android:paddingStart="16dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="16dp"
+                                android:paddingBottom="10dp">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/lastNamePasswordChangeEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/hintLastName" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/usernamePasswordChangeTextInputLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/login_green"
+                                android:paddingStart="16dp"
+                                android:paddingTop="10dp"
+                                android:paddingEnd="16dp"
+                                android:paddingBottom="10dp">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/usernamePasswordChangeEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/hintUsername" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/updatePersonalDataPasswordChangeButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/login_green"
+                                android:padding="20dp"
+                                android:text="@string/updatePersonalData"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/atBrandsNamePasswordChangeTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:text="@string/atBrandNameWeAttach"
+                                android:textColorLink="@color/login_green" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/logoutPasswordChangeButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/red"
+                                android:padding="20dp"
+                                android:text="@string/logout"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

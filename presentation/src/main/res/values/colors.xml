@@ -9,4 +9,5 @@
     <color name="transparent">#80000000</color>
     <color name="login_green">#7bca83</color>
     <color name="gray">#e5e5e5</color>
+    <color name="red">#d12727</color>
 </resources>
