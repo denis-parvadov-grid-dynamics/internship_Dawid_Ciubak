@@ -1,7 +1,7 @@
 package com.example.data.local.repository
 
 import com.example.data.local.dao.DatabaseDao
-import com.example.domain.model.User
+import com.example.domain.model.user_related.User
 import com.example.domain.repository.AppDatabaseRepository
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single

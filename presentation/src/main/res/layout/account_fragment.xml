@@ -238,7 +238,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="128dp"
+                android:layout_marginBottom="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -323,12 +323,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
 
-                                app:helperTextEnabled="true"
-                                app:helperTextTextColor="@color/login_green"
                                 android:paddingStart="16dp"
                                 android:paddingTop="10dp"
                                 android:paddingEnd="16dp"
-                                android:paddingBottom="10dp">
+                                android:paddingBottom="10dp"
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/login_green">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/firstNamePasswordChangeEditText"
@@ -348,12 +348,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
 
-                                app:helperTextEnabled="true"
-                                app:helperTextTextColor="@color/login_green"
                                 android:paddingStart="16dp"
                                 android:paddingTop="10dp"
                                 android:paddingEnd="16dp"
-                                android:paddingBottom="10dp">
+                                android:paddingBottom="10dp"
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/login_green">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/lastNamePasswordChangeEditText"
@@ -372,12 +372,12 @@
                                 android:id="@+id/usernamePasswordChangeTextInputLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                app:helperTextEnabled="true"
-                                app:helperTextTextColor="@color/login_green"
                                 android:paddingStart="16dp"
                                 android:paddingTop="10dp"
                                 android:paddingEnd="16dp"
-                                android:paddingBottom="10dp">
+                                android:paddingBottom="10dp"
+                                app:helperTextEnabled="true"
+                                app:helperTextTextColor="@color/login_green">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/usernamePasswordChangeEditText"

@@ -2,7 +2,7 @@ package com.example.presentation.account_tab.registerFragment
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.domain.model.User
+import com.example.domain.model.user_related.User
 import com.example.domain.repository.AppDatabaseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable

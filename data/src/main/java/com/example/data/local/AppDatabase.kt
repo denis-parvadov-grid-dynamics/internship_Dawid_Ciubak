@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.data.local.dao.DatabaseDao
 import com.example.domain.common.UriConverters
-import com.example.domain.model.User
+import com.example.domain.model.user_related.User
 
 @Database(entities = [User::class], version = 1, exportSchema = false)
 @TypeConverters(UriConverters::class)
