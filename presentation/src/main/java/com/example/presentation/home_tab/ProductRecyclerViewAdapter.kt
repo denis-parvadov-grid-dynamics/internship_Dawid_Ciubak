@@ -38,6 +38,4 @@ class ProductRecyclerViewAdapter(
     override fun getItemCount(): Int {
         return listOfProducts.size
     }
-
-
 }
