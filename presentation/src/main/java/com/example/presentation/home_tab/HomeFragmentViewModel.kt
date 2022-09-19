@@ -1,5 +1,6 @@
 package com.example.presentation.home_tab
 
+import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.common.SortOrder
@@ -17,12 +18,13 @@ class HomeFragmentViewModel @Inject constructor(
     private val compositeDisposable = CompositeDisposable()
     private val holderOfAllProducts = MutableLiveData<List<ProductModel>>()
     val filteredListOfAllProducts = MutableLiveData<Result<List<ProductModel>>>()
+    val recyclerViewScrollState = Bundle()
 
     init {
         getAllProducts()
     }
 
-    // initial setup
+    // initial setup, should be called once only
     private fun getAllProducts() {
         return apiRepository
             .getAllProducts(SortOrder.asc) // default order
@@ -35,13 +37,25 @@ class HomeFragmentViewModel @Inject constructor(
             }).let { compositeDisposable.add(it) }
     }
 
+    fun onRefresh(sortOrder: SortOrder, itemTitleStartsWith: String) {
+        apiRepository.getAllProducts(sortOrder).subscribeOn(Schedulers.io()).subscribe({
+            holderOfAllProducts.postValue(it)
+            onSortOrderChanged(sortOrder)
+            onSearchQueryChanged(itemTitleStartsWith)
+        }, {
+            filteredListOfAllProducts.postValue(Result.failure(it))
+        })
+    }
+
     fun onSortOrderChanged(sortOrder: SortOrder) {
         val filteredList = filteredListOfAllProducts.value?.getOrNull()
         if (filteredList != null) {
-            filteredListOfAllProducts.value = when (sortOrder) {
-                SortOrder.desc -> Result.success(filteredList.sortedByDescending { it.id })
-                SortOrder.asc -> Result.success(filteredList.sortedBy { it.id })
-            }
+            filteredListOfAllProducts.postValue(
+                when (sortOrder) {
+                    SortOrder.desc -> Result.success(filteredList.sortedByDescending { it.id })
+                    SortOrder.asc -> Result.success(filteredList.sortedBy { it.id })
+                }
+            )
         }
     }
 

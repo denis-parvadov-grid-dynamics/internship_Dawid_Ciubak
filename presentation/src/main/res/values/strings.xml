@@ -28,10 +28,13 @@
     <!-- Strings related to the home fragment -->
     <string name="filters"><u>Filters</u></string>
     <string name="searchForItems">Search for items</string>
+    <string name="refresh">Refresh</string>
     <string-array name="order_spinner_options">
         <item>Latest</item>
         <item>Oldest</item>
     </string-array>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
