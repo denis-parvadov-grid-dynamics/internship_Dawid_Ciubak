@@ -92,4 +92,7 @@ dependencies {
     // recycler view
     implementation "androidx.recyclerview:recyclerview:1.2.1"
 
+    // testing (rules)
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
 }
