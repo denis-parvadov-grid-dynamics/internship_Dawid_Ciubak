@@ -1,12 +1,12 @@
-package com.example.domain.model
+package com.example.domain.model.user_related
 
 import android.net.Uri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.domain.model.api_model.Address
-import com.example.domain.model.api_model.ApiUser
-import com.example.domain.model.api_model.Geolocation
-import com.example.domain.model.api_model.Name
+import com.example.domain.model.user_related.api_model.Address
+import com.example.domain.model.user_related.api_model.ApiUser
+import com.example.domain.model.user_related.api_model.Geolocation
+import com.example.domain.model.user_related.api_model.Name
 
 @Entity(tableName = "all_users")
 data class User(

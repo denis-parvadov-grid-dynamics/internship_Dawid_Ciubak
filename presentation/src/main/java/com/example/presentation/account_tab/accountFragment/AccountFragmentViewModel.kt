@@ -2,7 +2,7 @@ package com.example.presentation.account_tab.accountFragment
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.domain.model.User
+import com.example.domain.model.user_related.User
 import com.example.domain.repository.AppDatabaseRepository
 import com.example.domain.repository.FakeStoreRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

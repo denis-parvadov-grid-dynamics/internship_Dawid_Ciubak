@@ -27,7 +27,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.domain.common.toTrimmedString
 import com.example.domain.common.validateAsName
 import com.example.domain.common.validateAsUsername
-import com.example.domain.model.User
+import com.example.domain.model.user_related.User
 import com.example.presentation.BaseFragment
 import com.example.presentation.R
 import com.example.presentation.databinding.AccountFragmentBinding

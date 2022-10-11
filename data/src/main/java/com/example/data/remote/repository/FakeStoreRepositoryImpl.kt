@@ -2,10 +2,13 @@ package com.example.data.remote.repository
 
 import com.example.data.remote.api.FakeStoreApi
 import com.example.domain.common.LoginCredentialsWrapper
-import com.example.domain.model.ApiResponse
-import com.example.domain.model.api_model.ApiUser
+import com.example.domain.common.SortOrder
+import com.example.domain.model.product_related.ProductModel
+import com.example.domain.model.user_related.ApiResponse
+import com.example.domain.model.user_related.api_model.ApiUser
 import com.example.domain.repository.FakeStoreRepository
 import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 
@@ -22,5 +25,9 @@ class FakeStoreRepositoryImpl @Inject constructor(
     // that's why we are using "UpdateUser" and not our app's "User"
     override fun updateUser(user: ApiUser): Completable {
         return api.updateUser(user)
+    }
+
+    override fun getAllProducts(sort: SortOrder): Observable<List<ProductModel>> {
+        return api.getAllProducts(sort)
     }
 }
