@@ -100,10 +100,14 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
         // this way it always works
         val lastKnownScrollState = viewModel.recyclerViewScrollState
             .getParcelable<Parcelable>("recyclerViewScrollState")
-
         binding.productRecyclerView.adapter =
-            ProductRecyclerViewAdapter(listOfProducts) { position ->
-                findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment)
+            HomeFragmentRecyclerViewAdapter(listOfProducts) { position ->
+                // create a bundle to pass our product to the product detail fragment
+                // could also be done with the Gson.toJson(), but doing that with all of the
+                // products would be a nightmare
+                val bundle = Bundle()
+                bundle.putParcelable("selectedProduct", listOfProducts[position])
+                findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment, bundle)
             }
         binding.productRecyclerView.layoutManager?.onRestoreInstanceState(lastKnownScrollState)
     }
