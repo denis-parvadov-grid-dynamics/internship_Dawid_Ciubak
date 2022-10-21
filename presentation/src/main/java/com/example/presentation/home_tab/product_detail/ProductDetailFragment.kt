@@ -29,7 +29,7 @@ class ProductDetailFragment :
 
     private fun getTheSelectedProduct(): ProductModel {
         // we are sure that the product IS in the arguments, thus the usage of "!!"
-        return arguments!!.getParcelable("selectedProduct")!!
+        return requireArguments().getParcelable("selectedProduct")!!
     }
 
     private fun loadProductDataIntoUi(product: ProductModel) {

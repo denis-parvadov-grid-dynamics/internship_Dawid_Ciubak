@@ -36,9 +36,9 @@
 
 
     <!-- Strings related to the product detail fragment -->
-    <string name="readAllReviews"><u>Read all %1$s reviews</u></string>
-    <string name="reviewCount">(%1$s)</string>
-    <string name="productPrice">$%1$s</string>
+    <string name="readAllReviews"><u>Read all %1$d reviews</u></string>
+    <string name="reviewCount">(%1$d)</string>
+    <string name="productPrice">$%1$d</string>
     <string name="addToCart">add to cart</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
