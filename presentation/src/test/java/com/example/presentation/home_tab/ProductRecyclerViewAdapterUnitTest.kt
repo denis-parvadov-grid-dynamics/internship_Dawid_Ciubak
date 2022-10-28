@@ -22,7 +22,7 @@ class ProductRecyclerViewAdapterUnitTest {
         )
 
         // recycler view adapter that holds the fake data
-        val recyclerViewAdapter = ProductRecyclerViewAdapter(testingListOfProducts) {
+        val recyclerViewAdapter = HomeFragmentRecyclerViewAdapter(testingListOfProducts) {
             // onCLick: do nothing
         }
 

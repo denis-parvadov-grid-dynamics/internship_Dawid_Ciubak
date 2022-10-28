@@ -16,6 +16,10 @@
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
-        android:name="com.example.presentation.home_tab.ProductDetailFragment"
-        android:label="ProductDetailFragment" />
+        android:name="com.example.presentation.home_tab.product_detail.ProductDetailFragment"
+        android:label="ProductDetailFragment" >
+        <action
+            android:id="@+id/action_productDetailFragment_self"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
 </navigation>

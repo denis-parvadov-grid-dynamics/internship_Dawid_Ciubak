@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.2.1" type="baseline" client="gradle" dependencies="false" name="AGP (7.2.1)" variant="all" version="7.2.1">
+
+    <issue
+        id="SimpleDateFormat"
+        message="To get local formatting use `getDateInstance()`, `getDateTimeInstance()`, or `getTimeInstance()`, or use `new SimpleDateFormat(String template, Locale locale)` with for example `Locale.US` for ASCII dates."
+        errorLine1="        val timeStamp: String = SimpleDateFormat(&quot;yyyyMMdd_HHmmss&quot;).format(Date())"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/example/presentation/account_tab/accountFragment/AccountFragment.kt"
+            line="148"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="QueryPermissionsNeeded"
+        message="Consider adding a `&lt;queries>` declaration to your manifest when calling this \&#xA;method; see https://g.co/dev/packagevisibility for details"
+        errorLine1="            takePictureIntent.resolveActivity(requireContext().packageManager)?.also {"
+        errorLine2="                              ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/example/presentation/account_tab/accountFragment/AccountFragment.kt"
+            line="123"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="VectorRaster"
+        message="This tag is not supported in images generated from this vector icon for API &lt; 24; check generated icon to make sure it looks acceptable"
+        errorLine1="    &lt;clip-path"
+        errorLine2="    ^">
+        <location
+            file="src/main/res/drawable/ic_logo_transparent.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.7.0 is available: 1.9.0"
+        errorLine1="    implementation &apos;androidx.core:core-ktx:1.7.0&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="46"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.appcompat:appcompat than 1.4.2 is available: 1.5.1"
+        errorLine1="    implementation &apos;androidx.appcompat:appcompat:1.4.2&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="47"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.android.material:material than 1.6.1 is available: 1.7.0"
+        errorLine1="    implementation &apos;com.google.android.material:material:1.6.1&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="48"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.navigation:navigation-fragment-ktx than 2.5.0 is available: 2.5.2"
+        errorLine1="    implementation &apos;androidx.navigation:navigation-fragment-ktx:2.5.0&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="49"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.navigation:navigation-ui-ktx than 2.5.0 is available: 2.5.2"
+        errorLine1="    implementation &apos;androidx.navigation:navigation-ui-ktx:2.5.0&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="50"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.navigation:navigation-fragment-ktx than 2.5.0 is available: 2.5.2"
+        errorLine1="    implementation &quot;androidx.navigation:navigation-fragment-ktx:$nav_version&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="61"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.navigation:navigation-ui-ktx than 2.5.0 is available: 2.5.2"
+        errorLine1="    implementation &quot;androidx.navigation:navigation-ui-ktx:$nav_version&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="62"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-viewmodel-ktx than 2.5.0 is available: 2.5.1"
+        errorLine1="    implementation &quot;androidx.lifecycle:lifecycle-viewmodel-ktx:$coroutines_lifecycle_version&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="76"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.5.0 is available: 2.5.1"
+        errorLine1="    implementation &quot;androidx.lifecycle:lifecycle-runtime-ktx:$coroutines_lifecycle_version&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="77"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="StringFormatMatches"
+        message="Suspicious argument type for formatting argument #1 in `readAllReviews`: conversion is `s`, received `int` (argument #2 in method call) (Did you mean formatting character `d`, &apos;o&apos; or `x`?)"
+        errorLine1="            getString(R.string.readAllReviews, product.rating.count)"
+        errorLine2="                                               ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/example/presentation/home_tab/product_detail/ProductDetailFragment.kt"
+            line="44"
+            column="48"/>
+        <location
+            file="src/main/res/values/strings.xml"
+            line="39"
+            column="35"
+            message="Conflicting argument declaration here"/>
+    </issue>
+
+    <issue
+        id="StringFormatMatches"
+        message="Suspicious argument type for formatting argument #1 in `readAllReviews`: conversion is `s`, received `int` (argument #2 in method call) (Did you mean formatting character `d`, &apos;o&apos; or `x`?)"
+        errorLine1="            getString(R.string.readAllReviews, product.rating.count)"
+        errorLine2="                                               ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/example/presentation/home_tab/product_detail/ProductDetailFragment.kt"
+            line="44"
+            column="48"/>
+        <location
+            file="src/main/res/values/strings.xml"
+            line="39"
+            column="35"
+            message="Conflicting argument declaration here"/>
+    </issue>
+
+    <issue
+        id="NotifyDataSetChanged"
+        message="It will always be more efficient to use more specific change events if you can. Rely on `notifyDataSetChanged` as a last resort."
+        errorLine1="                notifyDataSetChanged()"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/example/presentation/home_tab/product_detail/ProductDetailRecyclerViewAdapter.kt"
+            line="20"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (2660 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="      android:pathData=&quot;M17.758,6.972V7.808V9.901V12.641V15.418V17.626C17.758,17.969 17.76,18.313 17.758,18.656V18.671C17.76,18.537 17.757,18.774 17.757,18.716C17.757,18.771 17.781,18.639 17.758,18.688C17.75,18.704 17.746,18.727 17.744,18.744C17.736,18.795 17.784,18.68 17.752,18.718C17.742,18.731 17.732,18.75 17.726,18.765C17.705,18.812 17.781,18.714 17.74,18.744C17.728,18.754 17.712,18.769 17.704,18.782C17.684,18.809 17.775,18.729 17.702,18.782C17.698,18.784 17.694,18.786 17.69,18.789C17.659,18.806 17.659,18.806 17.69,18.791C17.698,18.786 17.706,18.784 17.714,18.78C17.702,18.785 17.69,18.789 17.675,18.793C17.578,18.819 17.75,18.797 17.647,18.8H17.631H17.61H17.327H15.936H13.753H11.132H8.427H5.992H4.178C3.902,18.8 3.627,18.802 3.351,18.8H3.334H3.306C3.231,18.8 3.326,18.796 3.332,18.804C3.33,18.8 3.287,18.791 3.279,18.789C3.202,18.77 3.305,18.793 3.302,18.799C3.3,18.801 3.261,18.775 3.256,18.772C3.184,18.736 3.302,18.83 3.256,18.77C3.257,18.774 3.219,18.732 3.219,18.729C3.229,18.716 3.264,18.808 3.235,18.748C3.237,18.752 3.209,18.701 3.209,18.699C3.224,18.691 3.234,18.789 3.219,18.723C3.219,18.728 3.204,18.668 3.204,18.668C3.217,18.666 3.208,18.763 3.208,18.695V18.665V18.644V18.295V16.572V13.992V11.148V8.678V7.156V6.95C3.142,7.073 3.074,7.195 3.007,7.318C3.501,6.937 3.995,6.553 4.489,6.172C4.816,5.921 5.141,5.67 5.468,5.419C6.084,4.944 6.702,4.469 7.317,3.992C8.034,3.439 8.754,2.885 9.472,2.332C9.868,2.027 10.279,1.734 10.665,1.412C10.671,1.408 10.677,1.404 10.683,1.399H10.272C10.604,1.655 10.932,1.909 11.264,2.164C11.969,2.707 12.674,3.25 13.379,3.795C14.029,4.297 14.679,4.798 15.33,5.3C15.583,5.496 15.838,5.692 16.092,5.888C16.698,6.356 17.303,6.825 17.911,7.293C17.927,7.306 17.945,7.318 17.962,7.334C18.134,7.466 18.423,7.37 18.518,7.18C18.631,6.959 18.557,6.739 18.372,6.597C17.813,6.167 17.254,5.735 16.696,5.303C16.432,5.098 16.169,4.896 15.906,4.694C15.292,4.221 14.679,3.747 14.062,3.274C13.341,2.718 12.62,2.162 11.899,1.605C11.5,1.298 11.109,0.973 10.7,0.681C10.693,0.676 10.688,0.672 10.682,0.668C10.576,0.587 10.377,0.587 10.271,0.668C9.79,1.038 9.311,1.409 8.829,1.779C7.935,2.469 7.04,3.157 6.148,3.847C5.644,4.237 5.138,4.626 4.634,5.013C4.004,5.499 3.376,5.984 2.749,6.469C2.698,6.508 2.649,6.546 2.598,6.587C2.472,6.685 2.401,6.796 2.395,6.968C2.393,7.019 2.395,7.07 2.395,7.121V7.887V10.738V14.308V17.356C2.395,17.792 2.385,18.232 2.395,18.668C2.407,19.211 2.816,19.639 3.334,19.649H3.415H3.947H6.173H9.371H12.784H15.72H17.444C17.682,19.649 17.909,19.647 18.123,19.504C18.408,19.317 18.57,18.997 18.572,18.646V18.483V16.41V13.037V9.589V7.285V6.962C18.572,6.739 18.385,6.526 18.165,6.536C17.943,6.557 17.758,6.733 17.758,6.972L17.758,6.972Z&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_home.xml"
+            line="7"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1778 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="      android:pathData=&quot;M12.503,11.496V12.264V14.11V16.343V18.276C12.503,18.59 12.491,18.906 12.503,19.22V19.235L12.91,18.809H11.27H8.655H8.053L8.46,19.235V17.434V13.932V11.584V11.512V11.501V11.472C8.46,11.403 8.469,11.499 8.453,11.499C8.452,11.499 8.471,11.422 8.473,11.418C8.491,11.335 8.431,11.49 8.473,11.418C8.475,11.414 8.512,11.348 8.514,11.348C8.529,11.358 8.453,11.416 8.499,11.372C8.504,11.368 8.555,11.314 8.556,11.317C8.566,11.332 8.473,11.368 8.548,11.327C8.555,11.325 8.605,11.293 8.605,11.295C8.589,11.301 8.573,11.31 8.556,11.316C8.573,11.309 8.589,11.303 8.607,11.299C8.613,11.297 8.66,11.286 8.66,11.286C8.596,11.295 8.586,11.295 8.634,11.293H8.662H8.731H9.933H11.597H12.146H12.284H12.304H12.319C12.407,11.295 12.307,11.297 12.307,11.288C12.307,11.287 12.38,11.307 12.384,11.31C12.457,11.328 12.315,11.263 12.384,11.31C12.388,11.311 12.451,11.351 12.451,11.352C12.447,11.359 12.376,11.277 12.428,11.337C12.432,11.341 12.483,11.395 12.481,11.397C12.474,11.401 12.425,11.305 12.465,11.375C12.466,11.38 12.505,11.445 12.503,11.448C12.486,11.455 12.477,11.358 12.491,11.422C12.493,11.427 12.512,11.503 12.512,11.503C12.51,11.484 12.508,11.465 12.503,11.445V11.496C12.508,11.719 12.686,11.932 12.91,11.922C13.125,11.912 13.323,11.735 13.316,11.496C13.304,10.91 12.863,10.445 12.302,10.434C12.208,10.432 12.113,10.434 12.019,10.434H10.491H8.959C8.859,10.434 8.76,10.432 8.66,10.434C8.117,10.444 7.688,10.875 7.645,11.438C7.631,11.627 7.644,11.822 7.644,12.011V13.352V16.937C7.644,17.69 7.634,18.444 7.644,19.195V19.229C7.644,19.459 7.83,19.655 8.05,19.655H9.69H12.305H12.907C13.126,19.655 13.313,19.459 13.313,19.229V18.461V16.615V14.382V12.449C13.313,12.136 13.321,11.821 13.313,11.505V11.49C13.313,11.267 13.126,11.054 12.907,11.064C12.69,11.081 12.503,11.258 12.503,11.496L12.503,11.496Z&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_home.xml"
+            line="16"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="InefficientWeight"
+        message="Use a `layout_width` of `0dp` instead of `wrap_content` for better performance"
+        errorLine1="                                android:layout_width=&quot;wrap_content&quot;"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/account_fragment.xml"
+            line="218"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="InefficientWeight"
+        message="Use a `layout_width` of `0dp` instead of `wrap_content` for better performance"
+        errorLine1="                                android:layout_width=&quot;wrap_content&quot;"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/account_fragment.xml"
+            line="306"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="InefficientWeight"
+        message="Use a `layout_width` of `0dp` instead of `wrap_content` for better performance"
+        errorLine1="                                android:layout_width=&quot;wrap_content&quot;"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/account_fragment.xml"
+            line="417"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.dark_variant` appears to be unused"
+        errorLine1="    &lt;color name=&quot;dark_variant&quot;>#43464E&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="6"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.light_gray` appears to be unused"
+        errorLine1="    &lt;color name=&quot;light_gray&quot;>#F1F2F3&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="8"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.transparent` appears to be unused"
+        errorLine1="    &lt;color name=&quot;transparent&quot;>#80000000&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/colors.xml"
+            line="9"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.drawable.custom_cursor` appears to be unused"
+        errorLine1="&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; >"
+        errorLine2="^">
+        <location
+            file="src/main/res/drawable/custom_cursor.xml"
+            line="2"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.refresh` appears to be unused"
+        errorLine1="    &lt;string name=&quot;refresh&quot;>Refresh&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="31"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.hello_blank_fragment` appears to be unused"
+        errorLine1="    &lt;string name=&quot;hello_blank_fragment&quot;>Hello blank fragment&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="44"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="IconLocation"
+        message="Found bitmap drawable `res/drawable/avatar.png` in densityless folder">
+        <location
+            file="src/main/res/drawable/avatar.png"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="                        &lt;ImageButton"
+        errorLine2="                         ~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/account_fragment.xml"
+            line="61"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="                        &lt;ImageButton"
+        errorLine2="                         ~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/account_fragment.xml"
+            line="272"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="            &lt;ImageView"
+        errorLine2="             ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/activity_main.xml"
+            line="70"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="                &lt;ImageView"
+        errorLine2="                 ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/home_fragment.xml"
+            line="23"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="                &lt;ImageButton"
+        errorLine2="                 ~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/home_fragment.xml"
+            line="51"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="            &lt;ImageView"
+        errorLine2="             ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/product_detail_fragment.xml"
+            line="16"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="            &lt;ImageView"
+        errorLine2="             ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/product_detail_fragment.xml"
+            line="46"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="            &lt;ImageButton"
+        errorLine2="             ~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/product_detail_fragment.xml"
+            line="140"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="            &lt;ImageButton"
+        errorLine2="             ~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/product_detail_fragment.xml"
+            line="151"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="        &lt;ImageView"
+        errorLine2="         ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/product_detail_recycler_view_image.xml"
+            line="11"
+            column="10"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="            &lt;ImageView"
+        errorLine2="             ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/shopping_list_item.xml"
+            line="17"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        errorLine1="            binding.itemPriceTextView.text = &quot;$${data.price}&quot;"
+        errorLine2="                                             ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/example/presentation/home_tab/HomeFragmentRecyclerViewAdapter.kt"
+            line="20"
+            column="46"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        errorLine1="            binding.itemRatingCountTextView.text = &quot;(${data.rating.count})&quot;"
+        errorLine2="                                                   ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/example/presentation/home_tab/HomeFragmentRecyclerViewAdapter.kt"
+            line="22"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Home&quot;, should use `@string` resource"
+        errorLine1="        android:title=&quot;Home&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/menu/bottom_nav_menu_res.xml"
+            line="7"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Menu&quot;, should use `@string` resource"
+        errorLine1="        android:title=&quot;Menu&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/menu/bottom_nav_menu_res.xml"
+            line="12"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Wishlist&quot;, should use `@string` resource"
+        errorLine1="        android:title=&quot;Wishlist&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/menu/bottom_nav_menu_res.xml"
+            line="17"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Account&quot;, should use `@string` resource"
+        errorLine1="        android:title=&quot;Account&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/menu/bottom_nav_menu_res.xml"
+            line="22"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;Cart&quot;, should use `@string` resource"
+        errorLine1="        android:title=&quot;Cart&quot;/>"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/menu/bottom_nav_menu_res.xml"
+            line="26"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;TextView&quot;, should use `@string` resource"
+        errorLine1="    android:text=&quot;TextView&quot; />"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_dropdown_menu_card.xml"
+            line="8"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="HardcodedText"
+        message="Hardcoded string &quot;1&quot;, should use `@string` resource"
+        errorLine1="                android:text=&quot;1&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/product_detail_fragment.xml"
+            line="133"
+            column="17"/>
+    </issue>
+
+</issues>

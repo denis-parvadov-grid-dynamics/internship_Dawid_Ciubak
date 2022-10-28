@@ -7,11 +7,11 @@ import com.bumptech.glide.Glide
 import com.example.domain.model.product_related.ProductModel
 import com.example.presentation.databinding.ShoppingListItemBinding
 
-class ProductRecyclerViewAdapter(
+class HomeFragmentRecyclerViewAdapter(
     private val listOfProducts: List<ProductModel>,
     private val onProductSelected: (position: Int) -> Unit
 ) :
-    RecyclerView.Adapter<ProductRecyclerViewAdapter.ViewHolder>() {
+    RecyclerView.Adapter<HomeFragmentRecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ShoppingListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
